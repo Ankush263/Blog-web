@@ -59,6 +59,11 @@ app.get('/post/:postName', (req, res) => {
       res.render("post", {title:post.title, content:post.content})
     }
   })
+
+  
+ 
+
+
 })
 
 
