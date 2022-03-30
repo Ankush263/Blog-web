@@ -51,29 +51,14 @@ app.post('/compose', (req, res) => {
 })
 
 app.get('/post/:postName', (req, res) => {
-  const requestedTitle = _.camelCase(req.params.postName)
+  const requestedTitle = _.camelCase(req.params.postName)    //Here I use Lodash library to convert any string
   posts.forEach(post => {
-    const recivedTitle = _.camelCase(post.title)
+    const recivedTitle = _.camelCase(post.title)             // _ => lodash
     if(requestedTitle === recivedTitle){
       res.render("post", {title:post.title, content:post.content})
     }
   })
-
-  
- 
-
-
 })
-
-
-
-
-
-
-
-
-
-
 
 app.listen(3000, function() {
   console.log("Server started on port 3000");
