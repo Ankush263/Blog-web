@@ -51,7 +51,6 @@ app.post('/compose', (req, res) => {
 })
 
 app.get('/post/:postName', (req, res) => {
-  console.log(res.body)
   const requestedTitle = _.camelCase(req.params.postName)
   posts.forEach(post => {
     const recivedTitle = _.camelCase(post.title)
