@@ -52,9 +52,10 @@ app.get('/compose', (req, res) => {
 })
 
 app.post('/compose', (req, res) => {
+
   const post = new Post({
     title: req.body.title,
-    content: req.body.content
+    content: req.body.postBody
   })
 
   post.save()
