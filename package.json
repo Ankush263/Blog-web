@@ -12,6 +12,7 @@
     "ejs": "^2.6.1",
     "express": "^4.17.3",
     "lodash": "^4.17.11",
+    "mongoose": "^6.2.10",
     "node": "^17.7.1"
   },
   "description": ""
