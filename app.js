@@ -19,6 +19,17 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
 
+mongoose.connect("mongodb://localhost:27017/blogDB")
+
+const postsSchema = {
+  title: String,
+  content: String
+}
+
+const Post = mongoose.model("Post", postsSchema)
+
+
+
 app.get('/', (req, res) => {
 
   res.render('home', {
@@ -41,12 +52,12 @@ app.get('/compose', (req, res) => {
 })
 
 app.post('/compose', (req, res) => {
-  const post = {
+  const post = new Post({
     title: req.body.title,
-    content: req.body.postBody
-  }
+    content: req.body.content
+  })
 
-  posts.push(post)
+  post.save()
 
   res.redirect('/')
 })
