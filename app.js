@@ -89,7 +89,7 @@ app.post('/compose', (req, res) => {
   res.redirect('/')
 })
 
-app.get('/post/:postName', (req, res) => {
+app.get('/post/:postId', (req, res) => {
   const requestedTitle = _.camelCase(req.params.postName)    //Here I use Lodash library to convert any string
   posts.forEach(post => {
     const recivedTitle = _.camelCase(post.title)             // _ => lodash
