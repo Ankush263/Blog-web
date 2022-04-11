@@ -30,12 +30,24 @@ const Post = mongoose.model("Post", postsSchema)
 
 
 
+
+
 app.get('/', (req, res) => {
 
-  res.render('home', {
-    startingContent: homeStartingContent,
-    posts: posts
+
+  Post.find({}, (err, posts) => {
+    if(!err) {
+      res.render('home', {
+        startingContent: homeStartingContent,
+        posts: posts
+      })
+    }
   })
+
+  // res.render('home', {
+  //   startingContent: homeStartingContent,
+  //   posts: posts
+  // })
   
 })
 
@@ -58,9 +70,21 @@ app.post('/compose', (req, res) => {
     content: req.body.postBody
   })
 
+  // Post.find({}, (err, posts) => {
+  //   if(!err) {
+  //     res.render('posts', {
+  //       startingContent: homeStartingContent,
+  //       posts: posts
+  //     })
+  //   }
+  // })
   
 
-  post.save()
+  post.save((err) => {
+    if(!err) {
+      res.redirect('/')
+    }
+  })
 
   res.redirect('/')
 })
