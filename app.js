@@ -86,7 +86,7 @@ app.post('/compose', (req, res) => {
     }
   })
 
-  res.redirect('/')
+  // res.redirect('/')
 })
 
 app.get('/post/:postId', (req, res) => {
